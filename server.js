@@ -54,6 +54,7 @@
 // const jsonObject=JSON.parse(jsonString);
 // console.log(jsonObject);
 // console.log(jsonObject.name);
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const db=require('./db');
@@ -61,8 +62,8 @@ const Person=require('./models/Person');
 const MenuItem=require('./models/Menu')
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());// it will store in req.body
-require('dotenv').config();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+console.log('PORT:', process.env.PORT);
 
 app.get("/", (req, res) => 
     {	
